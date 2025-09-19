@@ -1,0 +1,52 @@
+{
+  "name": "eodhd-screener-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for EODHD stock screening, fundamentals, and technical indicators - Multi-stage filtering with RSI, SMA, market cap, and more",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "eodhd",
+    "stock-screener",
+    "financial-data",
+    "technical-indicators",
+    "fundamental-analysis",
+    "stock-market",
+    "trading",
+    "finance",
+    "rsi",
+    "sma",
+    "macd",
+    "market-cap",
+    "claude",
+    "ai"
+  ],
+  "author": "Pavel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fiale-plus/eodhd-screener-mcp.git"
+  },
+  "homepage": "https://github.com/fiale-plus/eodhd-screener-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/fiale-plus/eodhd-screener-mcp/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "eodhd-screener-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "inspector": "npx mcp-cli inspect dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.1",
+    "axios": "^1.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.3.3"
+  }
+}
