@@ -94,8 +94,6 @@ Add a `.claude.json` configuration file to your project root:
 }
 ```
 
-**Note**: For Claude Desktop, replace `/path/to/eodhd-screener-mcp/dist/index.js` with the actual path to your built server. For Claude Code, use the relative path from your project root.
-
 ## Available Tools
 
 ### 1. `screen_stocks`
@@ -127,7 +125,7 @@ Parameters:
 ### 3. `get_technical_indicator`
 Get technical indicator data for a stock.
 
-Parameters:/path/to/eodhd-screener-mcp/dist/index.js
+Parameters:
 - `apiKey` (optional): Your EODHD API key (if not set via environment variable)
 - `symbol` (required): Stock symbol
 - `function` (required): Indicator name (sma, rsi, macd, bbands, etc.)
