@@ -58,8 +58,9 @@ export EODHD_API_KEY="your_api_key_here"
 #### Option 2: Pass API Key in Tool Calls
 Include the `apiKey` parameter in each tool call (less secure, not recommended for production).
 
-### Usage with Claude Desktop
+### Usage with Claude Desktop & Claude Code
 
+#### Claude Desktop
 Add to your Claude Desktop configuration file (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
 
 ```json
@@ -76,7 +77,22 @@ Add to your Claude Desktop configuration file (`~/Library/Application Support/Cl
 }
 ```
 
-**Note**: Replace `/path/to/eodhd-screener-mcp/dist/index.js` with the actual path to your built server.
+#### Claude Code
+Add a `.claude.json` configuration file to your project root:
+
+```json
+{
+  "mcpServers": {
+    "eodhd-screener": {
+      "command": "node",
+      "args": ["/path/to/eodhd-screener-mcp/dist/index.js"],
+      "env": {
+        "EODHD_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
 
 ## Available Tools
 

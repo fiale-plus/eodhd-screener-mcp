@@ -1,4 +1,4 @@
-{
+ {
   "name": "eodhd-screener-mcp",
   "version": "0.1.0",
   "description": "MCP server for EODHD stock screening, fundamentals, and technical indicators - Multi-stage filtering with RSI, SMA, market cap, and more",
