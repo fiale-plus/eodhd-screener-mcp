@@ -7,6 +7,7 @@
     "test": "tsx working-test.ts",
     "test:simple": "tsx run-simple-test.ts",
     "test:regression": "tsx e2e/regression-suite.ts",
+    "test:real-api": "tsx test-with-real-api.ts",
     "test:screener": "tsx tests/unit/screener-unit.ts",
     "test:technical": "tsx tests/unit/technical-unit.ts",
     "test:build": "tsc --noEmit --project tsconfig.json"

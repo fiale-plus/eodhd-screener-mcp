@@ -87,20 +87,37 @@ tests/
 
 ### Run All Tests
 ```bash
-npm test
+npm test  # Uses demo API key - safe for CI/CD
 ```
 
 ### Individual Test Suites
 ```bash
-# Just screener tests
-npm run test:screener
+# Demo API (safe for CI)
+npm test
 
-# Just technical indicator tests
-npm run test:technical
+# Real API key testing (if you have premium subscription)
+EODHD_API_KEY=your_real_key npm run test:real-api
 
-# Type checking
+# Simple test runner
+npm run test:simple
+
+# Type checking only
 npm run test:build
 ```
+
+### Test Modes
+
+#### 🆓 **Demo API Mode** (Default)
+- Uses `EODHD_API_KEY=demo`
+- Technical indicators work fully ✅
+- Screener/Fundamentals expect premium limitations ✅
+- Perfect for CI/CD and development
+
+#### 💎 **Premium API Mode**
+- Uses your real EODHD API key
+- All endpoints fully functional
+- Comprehensive data validation
+- Use: `EODHD_API_KEY=your_key npm test`
 
 ### Environment Variables
 ```bash
