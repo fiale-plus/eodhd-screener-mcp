@@ -4,7 +4,7 @@
   "description": "E2E regression tests for EODHD MCP Server",
   "type": "module",
   "scripts": {
-    "test": "npm run test:simple",
+    "test": "tsx working-test.ts",
     "test:simple": "tsx run-simple-test.ts",
     "test:regression": "tsx e2e/regression-suite.ts",
     "test:screener": "tsx tests/unit/screener-unit.ts",
