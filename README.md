@@ -5,6 +5,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![MCP](https://img.shields.io/badge/MCP-Compatible-blue)](https://modelcontextprotocol.io)
 
+[![Tests](https://github.com/fiale-plus/eodhd-screener-mcp/actions/workflows/test-main.yml/badge.svg)](https://github.com/fiale-plus/eodhd-screener-mcp/actions/workflows/test-main.yml)
+[![PR Tests](https://github.com/fiale-plus/eodhd-screener-mcp/actions/workflows/test-pr.yml/badge.svg)](https://github.com/fiale-plus/eodhd-screener-mcp/actions/workflows/test-pr.yml)
+
 🚀 **Professional-grade MCP server** for advanced stock screening using EODHD financial APIs. Multi-stage filtering with technical indicators, fundamental analysis, and market data.
 
 **Perfect for:** Quantitative analysis, algorithmic trading research, portfolio management, and financial AI applications.
@@ -181,3 +184,34 @@ npm run dev
 # Test with MCP inspector
 npm run inspector
 ```
+
+## Testing
+
+This project includes comprehensive regression tests to ensure reliability:
+
+```bash
+# Install test dependencies
+npm run test:install
+
+# Run regression tests
+npm test
+
+# Run tests from main directory
+npm run test
+```
+
+### Test Coverage
+
+- ✅ **Context Window Prevention** - Ensures RSI200/SMA200 don't exceed 25k tokens
+- ✅ **Dynamic Defaults** - Validates period × 1.5 multiplier working
+- ✅ **MCP Protocol** - Tests all 4 tool endpoints
+- ✅ **Data Quality** - RSI bounds, date formats, response structures
+- ✅ **Error Handling** - API failures, invalid inputs, timeouts
+
+### CI/CD
+
+- **PR Tests**: Run on every pull request with demo API
+- **Main Tests**: Comprehensive testing after merge + daily API health checks
+- **Manual Dispatch**: Option to run full tests with real API key
+
+See [Tests README](tests/README.md) for detailed testing information.
