@@ -151,7 +151,7 @@ class EODHDScreenerServer {
               },
               from: {
                 type: "string",
-                description: "Start date (YYYY-MM-DD format)",
+                description: "Start date (YYYY-MM-DD format). Defaults to period * 1.5 days ago (min 30, max 365) if not specified.",
               },
               to: {
                 type: "string",
@@ -163,7 +163,7 @@ class EODHDScreenerServer {
               },
               order: {
                 type: "string",
-                description: "Order of results ('a' for ascending, 'd' for descending)",
+                description: "Order of results ('a' for ascending, 'd' for descending). Defaults to 'd' (newest first).",
               },
             },
             required: ["symbol", "function"],
@@ -348,26 +348,34 @@ class EODHDScreenerServer {
         throw new Error("API key is required. Set EODHD_API_KEY environment variable or pass apiKey parameter.");
       }
 
+      // Set dynamic defaults based on indicator period to prevent context window overflow
+      const today = new Date();
+
+      // Calculate required days: period * 1.5 with minimum of 30 days, max of 365 days
+      const periodBasedDays = params.period ? Math.ceil(params.period * 1.5) : 30;
+      const requiredDays = Math.max(30, Math.min(periodBasedDays, 365));
+
+      const defaultFromDate = new Date(today.getTime() - (requiredDays * 24 * 60 * 60 * 1000));
+      const defaultFrom = defaultFromDate.toISOString().split('T')[0];
+
       const queryParams = new URLSearchParams({
         api_token: apiKey,
         fmt: "json",
         function: params.function,
+        // Dynamic lookback based on period (period * 1.5, min 30, max 365 days)
+        from: params.from || defaultFrom,
+        // Default to descending order (newest first)
+        order: params.order || "d",
       });
 
       if (params.period) {
         queryParams.append("period", params.period.toString());
-      }
-      if (params.from) {
-        queryParams.append("from", params.from);
       }
       if (params.to) {
         queryParams.append("to", params.to);
       }
       if (params.splitAdjustedOnly !== undefined) {
         queryParams.append("splitadjusted_only", params.splitAdjustedOnly.toString());
-      }
-      if (params.order) {
-        queryParams.append("order", params.order);
       }
 
       const response = await axios.get(

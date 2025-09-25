@@ -11,7 +11,7 @@ export EODHD_API_KEY="your_key"
 ## Tools
 - `screen_stocks` - Filter stocks by market cap, sector, etc.
 - `get_fundamentals` - Company financial data (requires premium)
-- `get_technical_indicator` - RSI, SMA, MACD indicators
+- `get_technical_indicator` - RSI, SMA, MACD indicators (dynamic defaults: period × 1.5 days, min 30, max 365)
 - `multi_stage_screen` - Combined screening with technical filters
 
 ## Development Commands
