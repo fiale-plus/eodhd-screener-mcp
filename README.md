@@ -23,8 +23,23 @@
 
 ## 🚀 Quick Start
 
+### Option 1: Install from NPM (Recommended)
+
 ```bash
-# Install and build
+# Install globally
+npm install -g eodhd-screener-mcp
+
+# Set API key
+export EODHD_API_KEY="your_eodhd_api_key"
+
+# Test installation
+eodhd-screener-mcp --help
+```
+
+### Option 2: Install from Source
+
+```bash
+# Clone and build
 git clone https://github.com/fiale-plus/eodhd-screener-mcp.git
 cd eodhd-screener-mcp
 npm install && npm run build
@@ -34,13 +49,6 @@ export EODHD_API_KEY="your_eodhd_api_key"
 
 # Test with inspector
 npm run inspector
-```
-
-## Installation
-
-```bash
-npm install
-npm run build
 ```
 
 ## Configuration
@@ -61,11 +69,29 @@ export EODHD_API_KEY="your_api_key_here"
 #### Option 2: Pass API Key in Tool Calls
 Include the `apiKey` parameter in each tool call (less secure, not recommended for production).
 
-### Usage with Claude Desktop & Claude Code
+### MCP Configuration
 
 #### Claude Desktop
-Add to your Claude Desktop configuration file (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS):
+Add to your Claude Desktop configuration file:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
 
+**Using NPM Package (Recommended):**
+```json
+{
+  "mcpServers": {
+    "eodhd-screener": {
+      "command": "npx",
+      "args": ["eodhd-screener-mcp"],
+      "env": {
+        "EODHD_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+**Using Local Installation:**
 ```json
 {
   "mcpServers": {
@@ -83,6 +109,22 @@ Add to your Claude Desktop configuration file (`~/Library/Application Support/Cl
 #### Claude Code
 Add a `.claude.json` configuration file to your project root:
 
+**Using NPM Package (Recommended):**
+```json
+{
+  "mcpServers": {
+    "eodhd-screener": {
+      "command": "npx",
+      "args": ["eodhd-screener-mcp"],
+      "env": {
+        "EODHD_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+**Using Local Installation:**
 ```json
 {
   "mcpServers": {
@@ -96,6 +138,20 @@ Add a `.claude.json` configuration file to your project root:
   }
 }
 ```
+
+### Installation Notes
+
+- **NPM Package**: The `npx eodhd-screener-mcp` command will automatically download and run the latest version
+- **Global Install**: Use `npm install -g eodhd-screener-mcp` for faster startup (no download needed)
+- **Local Development**: Use the local installation method if you're developing or customizing the server
+
+### Versioning
+
+This package uses **GitHub Release Tags** for versioning:
+- Create a GitHub release with tag `v1.2.3`
+- The workflow automatically extracts `1.2.3` and publishes to NPM
+- Package.json version is automatically updated during CI/CD
+- This ensures consistent versioning between GitHub releases and NPM packages
 
 ## Available Tools
 

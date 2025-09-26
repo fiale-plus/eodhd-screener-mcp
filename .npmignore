@@ -1,0 +1,28 @@
+# Source files
+src/
+tests/
+*.ts
+!*.d.ts
+
+# Development files
+.github/
+.git/
+.gitignore
+*.log
+*.tgz
+
+# Node modules
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Development configs
+tsconfig.json
