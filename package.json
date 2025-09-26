@@ -1,6 +1,6 @@
- {
+{
   "name": "eodhd-screener-mcp",
-  "version": "0.1.0",
+  "version": "0.0.0-dev",
   "description": "MCP server for EODHD stock screening, fundamentals, and technical indicators - Multi-stage filtering with RSI, SMA, market cap, and more",
   "keywords": [
     "mcp",
@@ -41,7 +41,17 @@
     "inspector": "npx mcp-cli inspect dist/index.js",
     "test": "cd tests && npm test",
     "test:install": "cd tests && npm install",
-    "test:regression": "cd tests && npm run test:regression"
+    "test:regression": "cd tests && npm run test:regression",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "CLAUDE.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.1",
